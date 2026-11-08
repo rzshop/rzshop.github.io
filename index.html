@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RZShop - Toko Online Official</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome untuk ikon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Header / Navbar -->
+    <header class="navbar">
+        <div class="logo">RZ<span>Shop</span></div>
+        <div class="cart-icon">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span id="cart-count">0</span>
+        </div>
+    </header>
+
+    <!-- Banner Hero -->
+    <section class="hero">
+        <h1>Selamat Datang di RZShop</h1>
+        <p>Dapatkan produk terbaik dengan harga terjangkau!</p>
+        <a href="#produk" class="btn-hero">Belanja Sekarang</a>
+    </section>
+
+    <!-- Katalog Produk -->
+    <section id="produk" class="container">
+        <h2 class="section-title">Produk Terpopuler</h2>
+        
+        <div class="product-grid">
+            <!-- Kartu Produk 1 -->
+            <div class="product-card">
+                <img src="https://via.placeholder.com/250" alt="Produk 1">
+                <h3>Produk 1</h3>
+                <p class="price">Rp 150.000</p>
+                <a <button onclick="checkout('Produk 1', 'Rp 150.000')" class="btn-buy" style="border: none; cursor: pointer;">
+    <i class="fa-brands fa-whatsapp"></i> Beli via WhatsApp
+</button>
+
+            </div>
+
+            <!-- Kartu Produk 2 -->
+            <div class="product-card">
+                <img src="https://via.placeholder.com/250" alt="Produk 2">
+                <h3>Produk 2</h3>
+                <p class="price">Rp 200.000</p>
+                <a <button onclick="checkout('Produk 1', 'Rp 150.000')" class="btn-buy" style="border: none; cursor: pointer;">
+    <i class="fa-brands fa-whatsapp"></i> Beli via WhatsApp
+</button>
+
+            </div>
+
+            <!-- Kartu Produk 3 -->
+            <div class="product-card">
+                <img src="https://via.placeholder.com/250" alt="Produk 3">
+                <h3>Produk 3</h3>
+                <p class="price">Rp 99.000</p>
+                <a <button onclick="checkout('Produk 1', 'Rp 150.000')" class="btn-buy" style="border: none; cursor: pointer;">
+    <i class="fa-brands fa-whatsapp"></i> Beli via WhatsApp
+</button>
+
+            </div>
+        </div>
+    </section>
+    <!-- Riwayat Transaksi Section -->
+    <section class="container">
+        <h2 class="section-title">Riwayat Transaksi Terakhir</h2>
+        <div id="transaction-history" class="history-card">
+            <p style="text-align: center; color: #777;">Belum ada transaksi.</p>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 RZShop. All rights reserved.</p>
+    </footer>
+<script>
+    function checkout(productName, price) {
+        // Ambil waktu saat ini
+        const date = new Date().toLocaleString('id-ID');
+        
+        // Buat data transaksi baru
+        const transaction = {
+            product: productName,
+            price: price,
+            date: date
+        };
+
+        // Ambil riwayat lama dari LocalStorage atau buat array kosong
+        let history = JSON.parse(localStorage.getItem('rzshop_history')) || [];
+        
+        // Masukkan transaksi baru ke urutan paling atas
+        history.unshift(transaction);
+        
+        // Simpan kembali ke LocalStorage
+        localStorage.setItem('rzshop_history', JSON.stringify(history));
+
+        // Tampilkan ulang riwayat
+        displayHistory();
+
+        // Buka WhatsApp (ganti nomor dengan nomor Anda)
+        const phone = "6281234567890";
+        const message = `Halo RZShop, saya ingin membeli ${productName} dengan harga ${price}. Mohon info selanjutnya.`;
+        window.open(`https://wa.me/${phone}?text=${encodeURIComponent(message)}`, '_blank');
+    }
+
+    function displayHistory() {
+        const historyContainer = document.getElementById('transaction-history');
+        let history = JSON.parse(localStorage.getItem('rzshop_history')) || [];
+
+        if (history.length === 0) {
+            historyContainer.innerHTML = '<p style="text-align: center; color: #777;">Belum ada transaksi.</p>';
+            return;
+        }
+
+        let html = '<ul style="list-style: none; padding: 0;">';
+        history.forEach(item => {
+            html += `
+                <li style="background: #fff; margin-bottom: 10px; padding: 12px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <strong>${item.product}</strong><br>
+                        <small style="color: #666;">${item.date}</small>
+                    </div>
+                    <span style="color: #27ae60; font-weight: bold;">${item.price}</span>
+                </li>
+            `;
+        });
+        html += '</ul>';
+        historyContainer.innerHTML = html;
+    }
+
+    // Jalankan saat halaman dimuat
+    window.onload = displayHistory;
+</script>
+
+</body>
+</html>
