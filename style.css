@@ -1,0 +1,143 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap');*{box-sizing:border-box}body{margin:0;background:#f7f8fc;color:#182235;font-family:'DM Sans',Arial,sans-serif}.header{height:72px;background:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 max(5%,calc((100% - 1120px)/2));gap:25px;box-shadow:0 2px 12px #1822350a;position:sticky;top:0;z-index:5}.brand{display:flex;align-items:center;gap:9px;text-decoration:none;color:#162033;font:700 19px 'Space Grotesk';white-space:nowrap}.brand img{width:42px;height:42px;object-fit:contain;background:#070b14;border-radius:50%}.blue{color:#2563eb}.head-search{display:flex;max-width:450px;flex:1;background:#f2f4f8;border-radius:9px;overflow:hidden}.head-search input{width:100%;border:0;background:transparent;padding:12px 15px;outline:0}.head-search button{border:0;background:transparent;padding:0 15px;font-size:22px}.head-actions{display:flex;gap:9px;align-items:center}.login-btn,.profile,.cart-btn{border:1px solid #e1e5ed;background:#fff;border-radius:8px;padding:10px 13px;cursor:pointer;color:#243047}.cart-btn b{background:#2563eb;color:#fff;padding:2px 6px;border-radius:20px;font-size:11px}.wrap{max-width:1120px;margin:auto;padding:25px 22px}.welcome{background:linear-gradient(115deg,#10234a,#1c4d9b);border-radius:17px;padding:29px 36px;color:white;display:flex;align-items:center;justify-content:space-between;min-height:190px;overflow:hidden}.tag{font-size:10px;letter-spacing:1.7px;color:#2563eb;font-weight:800}.welcome .tag{color:#bfdbfe}.welcome h1{font:700 30px/1.15 'Space Grotesk';margin:12px 0}.welcome h1 span{color:#93c5fd}.welcome p{font-size:13px;color:#dbeafe}.welcome-art{width:190px;height:140px;background:#050914;border-radius:14px;display:grid;place-items:center;transform:rotate(3deg);box-shadow:0 12px 30px #0004}.welcome-art img{width:95%;height:95%;object-fit:contain}.quick{background:#fff;margin-top:20px;border-radius:13px;padding:20px}.quick h3{font:700 16px 'Space Grotesk';margin:0 0 16px}.game-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.game{border:1px solid #e8ebf2;background:#fff;border-radius:10px;padding:12px 5px;display:grid;gap:7px;justify-items:center;font-size:12px;color:#334155;cursor:pointer}.game span{font-size:23px}.game.active{border-color:#2563eb;background:#eff6ff;color:#1d4ed8}.products{margin-top:24px}.section-title{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}.section-title h2{font:700 21px 'Space Grotesk';margin:0}.section-title p{color:#7b8798;font-size:12px;margin:5px 0}.section-title select{border:1px solid #e0e5ed;background:#fff;border-radius:8px;padding:9px}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.product{background:#fff;border:1px solid #e8ebf1;border-radius:12px;overflow:hidden;cursor:pointer;position:relative}.product img{width:100%;height:165px;object-fit:cover;display:block;background:#dbeafe}.badge{position:absolute;top:10px;left:10px;background:#f59e0b;color:#fff;font-size:9px;font-weight:800;padding:5px 8px;border-radius:5px}.pbody{padding:13px}.pbody .game-label{font-size:10px;color:#2563eb;font-weight:800}.pbody h3{font:700 15px 'Space Grotesk';margin:6px 0}.pbody p{font-size:11px;color:#778397;min-height:30px;margin:0}.price-line{display:flex;gap:8px;align-items:center;margin-top:12px}.price{font-weight:800;color:#17233a}.old{font-size:10px;color:#a1aab8;text-decoration:line-through}.discount{font-size:9px;color:#e11d48;background:#fff1f2;padding:4px;border-radius:4px}.buy{width:100%;margin-top:11px;border:0;border-radius:7px;padding:9px;background:#2563eb;color:white;font-weight:700;cursor:pointer}footer{border-top:1px solid #e7eaf0;margin-top:40px;padding:22px 0;display:flex;justify-content:space-between;align-items:center;color:#8993a3;font-size:11px}footer a,.admin-head>a{color:#2563eb;text-decoration:none}.hidden{display:none!important}.modal{position:fixed;inset:0;background:#0b1225a8;z-index:20;display:grid;place-items:center;padding:15px}.modalbox{width:min(420px,100%);background:white;border-radius:16px;padding:26px;position:relative;max-height:92vh;overflow:auto}.x{border:0;background:none;font-size:25px;color:#718096;cursor:pointer}.modalbox>.x{position:absolute;right:13px;top:10px}.modal-logo{width:60px;height:60px;object-fit:contain;background:#050914;border-radius:12px;display:block;margin-bottom:15px}.modalbox small{color:#2563eb;font-weight:800;letter-spacing:1px}.modalbox h2{font:700 24px 'Space Grotesk';margin:7px 0 17px}.modalbox label,.admin-form label{display:grid;gap:6px;font-size:12px;font-weight:700;margin-bottom:12px}.modalbox input,.admin-form input,.admin-form select,.admin-form textarea{border:1px solid #dfe4ec;border-radius:8px;padding:11px;font:inherit;width:100%;background:white}.blue-btn{border:0;background:#2563eb;color:white;border-radius:8px;padding:12px 16px;font-weight:800;cursor:pointer}.modalbox form .blue-btn{width:100%;margin-top:5px}.modalbox>p{text-align:center;font-size:12px;color:#718096}.modalbox>p button{border:0;background:none;color:#2563eb;font-weight:800}.note{font-size:10px!important;line-height:1.5}.msg{color:#dc2626!important}.shade{position:fixed;inset:0;background:#0b122577;z-index:14}.drawer{position:fixed;right:0;top:0;height:100%;width:min(390px,100%);background:white;z-index:15;transform:translateX(105%);transition:.25s;padding:22px;display:flex;flex-direction:column}.drawer.open{transform:translateX(0)}.drawer-head{display:flex;justify-content:space-between;border-bottom:1px solid #e8ebf1}.drawer-head h2{font:700 22px 'Space Grotesk'}.cart-row{display:flex;gap:10px;padding:14px 0;border-bottom:1px solid #eee}.cart-row img{width:76px;height:65px;object-fit:cover;border-radius:8px}.cart-row div{flex:1;font-size:12px}.cart-row button{border:1px solid #ddd;background:#fff;border-radius:5px;margin:6px 4px 0 0}.drawer-total{margin-top:auto;border-top:1px solid #e8ebf1;padding-top:17px;display:grid;gap:13px}.drawer-total strong{font-size:20px}.toast{position:fixed;bottom:20px;left:50%;transform:translate(-50%,15px);opacity:0;background:#17233a;color:white;padding:12px 18px;border-radius:8px;z-index:40;font-size:12px;transition:.2s}.toast.show{opacity:1;transform:translate(-50%,0)}.detailbox{width:min(520px,100%)}.detailbox img{width:100%;border-radius:10px;max-height:240px;object-fit:cover}.detailbox p{font-size:13px;line-height:1.7;color:#657186}.admin-body{background:#f5f7fb}.admin-head{height:65px;background:#fff;display:flex;justify-content:space-between;align-items:center;padding:0 max(5%,calc((100% - 950px)/2));box-shadow:0 2px 12px #00000008}.admin-wrap{max-width:950px;margin:35px auto;padding:0 18px}.admin-title{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}.admin-title h1{font:700 30px 'Space Grotesk';margin:8px 0}.admin-title p{color:#7b8798;font-size:13px}.admin-count{background:#eaf1ff;padding:13px 20px;border-radius:10px;display:grid;text-align:center;color:#1d4ed8}.admin-count b{font-size:24px}.admin-count small{font-size:10px}.admin-card{background:#fff;border:1px solid #e8ebf1;border-radius:13px;padding:22px;margin:16px 0}.admin-card h2{font:700 17px 'Space Grotesk';margin:0 0 18px}.admin-form{display:grid;grid-template-columns:1fr 1fr;gap:0 15px}.admin-form .wide{grid-column:1/-1}.admin-form label small{color:#8993a3;font-weight:400}.admin-list-row{display:flex;gap:13px;align-items:center;padding:12px 0;border-top:1px solid #edf0f4}.admin-list-row img{width:75px;height:58px;object-fit:cover;border-radius:7px}.admin-list-row div{flex:1;font-size:12px}.admin-list-row small{display:block;color:#788499;margin-top:4px}.admin-list-row button{border:1px solid #fecaca;background:#fff1f2;color:#be123c;border-radius:6px;padding:8px;cursor:pointer}.admin-warning{font-size:11px;color:#8b95a5;line-height:1.6}@media(max-width:700px){.header{padding:0 12px;gap:9px;height:64px}.brand{font-size:15px}.brand img{width:34px;height:34px}.head-search{max-width:none}.head-search input{padding:10px 8px;font-size:11px}.head-search button{padding:0 8px}.login-btn,.profile,.cart-btn{padding:8px;font-size:11px}.wrap{padding:16px 12px}.welcome{padding:22px;min-height:160px}.welcome h1{font-size:25px}.welcome-art{width:105px;height:95px}.welcome p{font-size:11px;max-width:220px}.quick{padding:15px}.game-grid{gap:7px}.game{font-size:10px}.game span{font-size:20px}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.product img{height:120px}.pbody{padding:10px}.pbody h3{font-size:13px}.pbody p{font-size:10px}.price-line{flex-wrap:wrap;gap:5px}.price{font-size:12px}.buy{font-size:11px;padding:8px}.admin-wrap{margin:20px auto}.admin-form{grid-template-columns:1fr}.admin-form .wide{grid-column:auto}.admin-title h1{font-size:24px}}
+/* --- CSS FINAL HALAMAN LOGIN TERPISAH --- */
+.login-page-body {
+    background-color: #0b0f19 !important;
+    color: #ffffff !important;
+    font-family: 'Space Grotesk', sans-serif !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    min-height: 100vh !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+}
+
+.login-wrapper {
+    width: 100% !important;
+    max-width: 400px !important;
+    padding: 20px !important;
+    box-sizing: border-box !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+}
+
+.back-home-link {
+    align-self: flex-start !important;
+    color: #94a3b8 !important;
+    text-decoration: none !important;
+    font-size: 14px !important;
+    margin-bottom: 15px !important;
+}
+
+.back-home-link:hover {
+    color: #ffffff !important;
+}
+
+.login-box-card {
+    background-color: #121824 !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 20px !important;
+    padding: 32px 24px !important;
+    text-align: center !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5) !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+}
+
+.brand-header-row {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 10px !important;
+    margin-bottom: 20px !important;
+    width: 100% !important;
+}
+
+.brand-logo-img {
+    width: 42px !important;
+    height: 42px !important;
+    object-fit: cover !important;
+    border-radius: 10px !important;
+}
+
+.brand-title-text {
+    font-size: 22px !important;
+    font-weight: 700 !important;
+    color: #ffffff !important;
+    letter-spacing: 0.5px !important;
+    white-space: nowrap !important;
+}
+
+.login-badge-sub {
+    font-size: 11px !important;
+    letter-spacing: 1.5px !important;
+    color: #3b82f6 !important;
+    font-weight: 700 !important;
+    display: block !important;
+    margin-bottom: 5px !important;
+}
+
+.login-text-group h2 {
+    font-size: 22px !important;
+    font-weight: 700 !important;
+    margin-bottom: 8px !important;
+    color: #ffffff !important;
+}
+
+.login-text-group p {
+    font-size: 13px !important;
+    color: #94a3b8 !important;
+    margin-bottom: 24px !important;
+    line-height: 1.4 !important;
+}
+
+.google-login-btn {
+    width: 100% !important;
+    background-color: #2563eb !important;
+    color: white !important;
+    border: none !important;
+    padding: 12px 16px !important;
+    border-radius: 12px !important;
+    font-size: 15px !important;
+    font-weight: 600 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 12px !important;
+    cursor: pointer !important;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3) !important;
+}
+
+.google-login-btn:hover {
+    background-color: #1d4ed8 !important;
+}
+
+.google-icon {
+    background: white !important;
+    color: #2563eb !important;
+    width: 24px !important;
+    height: 24px !important;
+    border-radius: 50% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-weight: bold !important;
+    font-size: 14px !important;
+}
+
+.login-status-text {
+    font-size: 12px !important;
+    color: #ef4444 !important;
+    margin-top: 15px !important;
+    display: none !important;
+}
+
+.login-footer-note {
+    margin-top: 24px !important;
+    font-size: 11px !important;
+    color: #64748b !important;
+    line-height: 1.4 !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.05) !important;
+    padding-top: 15px !important;
+}

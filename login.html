@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Masuk - RZShop</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="login-page-body">
+
+    <div class="login-wrapper">
+        <!-- Tombol Kembali ke Beranda -->
+        <a href="index.html" class="back-home-link">&larr; Kembali ke Beranda</a>
+
+        <!-- Kartu Login Utama -->
+        <div class="login-box-card">
+            <!-- Logo RZ Shop (Sejajar Samping) -->
+            <div class="brand-header-row">
+                <img src="assets/logo-rz.png" alt="RZ Logo" class="brand-logo-img">
+                <span class="brand-title-text">RZ Shop</span>
+            </div>
+
+            <div class="login-text-group">
+                <span class="login-badge-sub">AKUN RZSHOP</span>
+                <h2>Masuk / Daftar</h2>
+                <p>Gunakan akun Google untuk masuk ke RZShop dengan aman.</p>
+            </div>
+
+            <!-- Tombol Google Login -->
+            <button id="googleLoginBtn" class="google-login-btn">
+                <span class="google-icon">G</span>
+                <span>Lanjutkan dengan Google</span>
+            </button>
+
+            <p class="login-status-text" id="loginStatusText">Menghubungkan ke Google...</p>
+
+            <div class="login-footer-note">
+                <p>RZShop hanya menerima nama, alamat email, dan informasi waktu login. Password Google tidak pernah diminta atau dikirim.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Pendukung -->
+    <script src="google-auth.js" type="module"></script>
+</body>
+</html>
