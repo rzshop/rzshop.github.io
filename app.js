@@ -1,0 +1,31 @@
+const defaults=[
+{id:1,name:"Akun Free Fire Sultan",game:"Free Fire",category:"Flash Sale",old:150000,price:99000,discount:"34% OFF",badge:"FLASH SALE",desc:"Akun pilihan dengan koleksi item menarik.",details:"Detail akun dapat ditanyakan kepada penjual.",img:"ff.svg"},
+{id:2,name:"Akun Mobile Legends",game:"Mobile Legends",category:"Akun Premium",old:200000,price:125000,discount:"37% OFF",badge:"POPULER",desc:"Akun Mobile Legends untuk pemain baru.",details:"Detail akun dapat ditanyakan kepada penjual.",img:"ml.svg"},
+{id:3,name:"Akun FF Hemat",game:"Free Fire",category:"Akun Murah",old:80000,price:50000,discount:"38% OFF",badge:"MURAH",desc:"Pilihan akun dengan harga bersahabat.",details:"Detail akun dapat ditanyakan kepada penjual.",img:"ff.svg"}
+];let products=JSON.parse(localStorage.getItem("rz_products")||"null")||defaults,cart=JSON.parse(localStorage.getItem("rz_cart")||"[]"),user=JSON.parse(localStorage.getItem("rz_user")||"null"),game="Semua";
+const $=id=>document.getElementById(id),money=n=>"Rp"+Number(n||0).toLocaleString("id-ID");
+function saveProducts(){localStorage.setItem("rz_products",JSON.stringify(products))}
+function render(){let q=$("search").value.toLowerCase(),arr=products.filter(p=>(game==="Semua"||p.game===game)&&(p.name.toLowerCase().includes(q)||p.desc.toLowerCase().includes(q)));let s=$("sort").value;if(s==="low")arr.sort((a,b)=>a.price-b.price);if(s==="high")arr.sort((a,b)=>b.price-a.price);$("productGrid").innerHTML=arr.map(p=>`<article class="product" onclick="detail(${p.id})"><span class="badge">${esc(p.badge||p.category)}</span><img src="${p.img}" alt=""><div class="pbody"><span class="game-label">${esc(p.game).toUpperCase()}</span><h3>${esc(p.name)}</h3><p>${esc(p.desc)}</p><div class="price-line"><span class="price">${money(p.price)}</span>${p.old?`<span class="old">${money(p.old)}</span>`:""}${p.discount?`<span class="discount">${esc(p.discount)}</span>`:""}</div><button class="buy" onclick="event.stopPropagation();add(${p.id})">Lihat / Beli Akun</button></div></article>`).join("")||"<p>Produk belum tersedia.</p>"}
+function esc(v){return String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function toast(t){$("toast").textContent=t;$("toast").classList.add("show");setTimeout(()=>$("toast").classList.remove("show"),2100)}
+function detail(id){let p=products.find(x=>x.id===id);$("detailContent").innerHTML=`<img src="${p.img}"><small>${esc(p.game)} · ${esc(p.category)}</small><h2>${esc(p.name)}</h2><p>${esc(p.desc)}</p><p>${esc(p.details||"")}</p><h2>${money(p.price)}</h2><button class="blue-btn" style="width:100%" onclick="add(${p.id});$('detailModal').classList.add('hidden')">Tambah ke keranjang</button>`;$("detailModal").classList.remove("hidden")}
+function add(id){let x=cart.find(x=>x.id===id);if(x)x.qty++;else cart.push({id,qty:1});localStorage.setItem("rz_cart",JSON.stringify(cart));renderCart();toast("Produk masuk keranjang")}
+function renderCart(){$("cartCount").textContent=cart.reduce((a,b)=>a+b.qty,0);$("cartItems").innerHTML=cart.map(x=>{let p=products.find(p=>p.id===x.id);if(!p)return"";return `<div class="cart-row"><img src="${p.img}"><div><b>${esc(p.name)}</b><br>${money(p.price)}<br><button onclick="qty(${p.id},-1)">−</button> ${x.qty} <button onclick="qty(${p.id},1)">+</button><button onclick="qty(${p.id},-${x.qty})">Hapus</button></div></div>`}).join("")||"<p>Keranjang masih kosong.</p>";$("total").textContent=money(cart.reduce((s,x)=>s+(products.find(p=>p.id===x.id)?.price||0)*x.qty,0))}
+function qty(id,n){let x=cart.find(x=>x.id===id);if(x)x.qty+=n;cart=cart.filter(x=>x.qty>0);localStorage.setItem("rz_cart",JSON.stringify(cart));renderCart()}
+function updateUser(){if(user){$("loginBtn").classList.add("hidden");$("profileBtn").classList.remove("hidden");$("profileBtn").textContent=user.name}else{$("loginBtn").classList.remove("hidden");$("profileBtn").classList.add("hidden")}}
+window.rzSetGoogleUser=function(profile){
+ user=profile||null;
+ if(user){localStorage.setItem("rz_user",JSON.stringify(user));}
+ else{localStorage.removeItem("rz_user");}
+ updateUser();
+};
+$('loginBtn').onclick = () => $('loginModal').style.display = 'flex';
+if ($('closeLoginModal')) {
+    $('closeLoginModal').onclick = () => $('loginModal').style.display = 'none';
+}
+$("profileBtn").onclick=()=>{if(confirm("Keluar dari akun?")){window.rzGoogleSignOut?.();}};
+document.querySelectorAll("[data-close]").forEach(b=>b.onclick=()=>$(b.dataset.close).classList.add("hidden"));
+$("search").oninput=render;$("searchBtn").onclick=render;$("sort").onchange=render;document.querySelector(".game-grid").onclick=e=>{let b=e.target.closest(".game");if(!b)return;game=b.dataset.game;document.querySelectorAll(".game").forEach(x=>x.classList.toggle("active",x===b));render()};
+$("cartBtn").onclick=()=>{$("drawer").classList.add("open");$("shade").classList.remove("hidden")};function closeDrawer(){$("drawer").classList.remove("open");$("shade").classList.add("hidden")}$("closeCart").onclick=closeDrawer;$("shade").onclick=closeDrawer;
+$("checkout").onclick=()=>{if(!cart.length){toast("Keranjang masih kosong");return}if(!user){closeDrawer();$("loginBtn").click();toast("Masuk dahulu untuk lanjut");return}let lines=cart.map(x=>{let p=products.find(p=>p.id===x.id);return `${p.name} x${x.qty} - ${money(p.price*x.qty)}`}).join("%0A");let total=money(cart.reduce((s,x)=>s+products.find(p=>p.id===x.id).price*x.qty,0));let msg=`Halo RZ Store, saya ingin pesan:%0A${lines}%0ATotal: ${total}%0ANama: ${user.name}`;window.open("https://wa.me/6282190056440?text="+msg,"_blank")};
+document.querySelectorAll(".modal").forEach(m=>m.addEventListener("click",e=>{if(e.target===m)m.classList.add("hidden")}));$("year").textContent=new Date().getFullYear();render();renderCart();updateUser();
