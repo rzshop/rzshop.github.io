@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#070b18">
+  <meta name="description" content="RZ Shop — digital gaming store dengan tampilan futuristik.">
+  <title>RZ Shop — JUAL BELI AKUN GAME</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="ambient ambient-a"></div><div class="ambient ambient-b"></div>
+  <header class="topbar">
+    <a class="brand" href="#home"><img src="rz-logo.png" alt="Logo RZ"><span>RZ <b>SHOP</b></span></a>
+    <nav id="nav">
+      <a href="#home">Beranda</a><a href="#catalog">Katalog</a><a href="#benefits">Keunggulan</a><a href="#faq">FAQ</a>
+    </nav>
+    <div class="top-actions"><button class="icon-btn" id="wishlistBtn" aria-label="Wishlist">♡ <i id="wishCount">0</i></button><button class="cart-btn" id="cartBtn">Keranjang <span id="cartCount">0</span></button><button class="menu-btn" id="menuBtn">☰</button></div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="pulse"></span> RZ SHOP • DIGITAL GAMING STORE</div>
+        <h1>LEVEL UP<br><em>YOUR GAME.</em></h1>
+        <p>Temukan pilihan digital gaming favoritmu dengan pengalaman belanja yang simpel, cepat, dan nyaman.</p>
+        <div class="hero-buttons"><a class="primary-btn" href="#catalog">Jelajahi Katalog <span>↗</span></a><a class="ghost-btn" href="#benefits">Kenali RZ Shop</a></div>
+        <div class="hero-stats"><div><strong>24/7</strong><small>akses katalog</small></div><div><strong>100%</strong><small>tampilan responsif</small></div><div><strong>RZ</strong><small>gaming identity</small></div></div>
+      </div>
+      <div class="hero-art"><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="character-frame"><img src="rz-character.png" alt="Karakter anime RZ"></div><div class="hero-tag">RZ<br><b>PLAYER</b></div></div>
+    </section>
+
+    <section class="ticker"><div>RZ SHOP <span>✦</span> PLAY SMART <span>✦</span> LEVEL UP <span>✦</span> RZ SHOP <span>✦</span> PLAY SMART <span>✦</span> LEVEL UP <span>✦</span></div></section>
+
+    <section class="catalog section" id="catalog">
+      <div class="section-head"><div><div class="eyebrow">PILIHAN UNTUKMU</div><h2>Jelajahi <em>Katalog.</em></h2><p>Gunakan pencarian dan kategori untuk menemukan produk.</p></div><div class="catalog-count" id="resultCount">0 produk</div></div>
+      <div class="toolbar"><label class="searchbox"><span>⌕</span><input id="searchInput" type="search" placeholder="Cari produk..."></label><div class="filters" id="filters"><button class="filter active" data-category="Semua">Semua</button><button class="filter" data-category="Mobile Legends">Mobile Legends</button><button class="filter" data-category="PUBG Mobile">PUBG Mobile</button><button class="filter" data-category="Lainnya">Lainnya</button></div><select id="sortSelect" aria-label="Urutkan produk"><option value="featured">Unggulan</option><option value="low">Harga terendah</option><option value="high">Harga tertinggi</option><option value="name">Nama A–Z</option></select></div>
+      <div class="product-grid" id="productGrid"></div>
+      <div class="empty-state" id="emptyState" hidden>Produk tidak ditemukan. Coba kata kunci atau kategori lain.</div>
+    </section>
+
+    <section class="feature-band section" id="benefits"><div class="feature-title"><div class="eyebrow">WHY RZ SHOP?</div><h2>Belanja digital,<br><em>lebih simpel.</em></h2></div><div class="feature-list"><article><span>01</span><div><h3>Desain nyaman</h3><p>Tampilan bersih dan mudah digunakan di HP maupun desktop.</p></div></article><article><span>02</span><div><h3>Katalog terorganisir</h3><p>Temukan produk lewat kategori, pencarian, dan pengurutan harga.</p></div></article><article><span>03</span><div><h3>Keranjang praktis</h3><p>Simpan pilihan sebelum melanjutkan proses pemesanan.</p></div></article></div></section>
+
+    <section class="banner section"><div><div class="eyebrow">WELCOME TO THE SQUAD</div><h2>Ready to <em>upgrade?</em></h2><p>Mulai jelajahi koleksi RZ Shop sekarang.</p><a class="primary-btn" href="#catalog">Lihat produk <span>↗</span></a></div><img src="rz-character.png" alt="" aria-hidden="true"></section>
+
+    <section class="faq section" id="faq"><div class="eyebrow">PUSAT BANTUAN</div><h2>Pertanyaan <em>umum.</em></h2><div class="faq-list">
+      <details><summary>Bagaimana cara memilih produk?</summary><p>Buka katalog, gunakan pencarian atau filter kategori, lalu tekan tombol Detail pada produk.</p></details>
+      <details><summary>Bagaimana cara melakukan pemesanan?</summary><p>Masukkan produk ke keranjang, periksa jumlah dan total, lalu lanjutkan melalui tombol pemesanan. Hubungkan nomor WhatsApp toko di file app.js terlebih dahulu.</p></details>
+      <details><summary>Apakah harga dan produk sudah asli?</summary><p>Produk contoh di website ini hanya untuk demo. Ganti data produk dengan informasi toko yang benar sebelum dipublikasikan.</p></details>
+    </div></section>
+  </main>
+
+  <footer><a class="brand" href="#home"><img src="rz-logo.png" alt=""><span>RZ <b>SHOP</b></span></a><p>© <span id="year"></span> RZ Shop. Built for players.</p><a href="#home">Kembali ke atas ↑</a></footer>
+
+  <div class="overlay" id="overlay"></div>
+  <aside class="drawer" id="cartDrawer" aria-label="Keranjang"><div class="drawer-head"><h3>Keranjang</h3><button class="close" data-close>×</button></div><div id="cartItems" class="drawer-content"></div><div class="drawer-foot"><div class="total-line"><span>Total</span><strong id="cartTotal">Rp0</strong></div><button class="primary-btn full" id="checkoutBtn">Lanjut pesan ↗</button><small>Pesanan akan dirangkum untuk dikirim melalui WhatsApp.</small></div></aside>
+  <aside class="drawer" id="wishDrawer" aria-label="Wishlist"><div class="drawer-head"><h3>Wishlist</h3><button class="close" data-close>×</button></div><div id="wishItems" class="drawer-content"></div></aside>
+  <div class="modal-wrap" id="productModal"><div class="modal"><button class="close modal-close" data-modal-close>×</button><div id="modalContent"></div></div></div>
+  <div class="toast" id="toast"></div>
+  <script src="app.js"></script>
+</body>
+</html>
