@@ -54,27 +54,38 @@ window.rzIsAdmin = false;
       render(); renderPremium();
       return true;
     }
-    document.getElementById('googleAdminLogin').onclick=async()=>{
-      try {
-        msg('Mengalihkan ke Google untuk login...');
-        const provider=new firebase.auth.GoogleAuthProvider();
-        await auth.signInWithRedirect(provider);
-      } catch(e) {
-        console.error('Google redirect login error:', e);
-        msg('Login gagal ('+(e.code||'tanpa-kode')+'): '+(e.message||'Periksa koneksi internet dan pengaturan Firebase.')+
-          (e.code==='auth/unauthorized-domain'?' Tambahkan rzshop.github.io di Authentication > Settings > Authorized domains.':
-          e.code==='auth/operation-not-allowed'?' Aktifkan Google di Authentication > Sign-in method.':
-          e.code==='auth/network-request-failed'||e.code==='auth/unavailable'?' Periksa koneksi internet, matikan VPN/adblock sementara, lalu coba lagi.':''));
-      }
-    };
-    // Complete Google redirect sign-in after returning to GitHub Pages.
-    auth.getRedirectResult().catch(e=>{
-      console.error('Google redirect result error:', e);
-      msg('Login Google gagal ('+(e.code||'tanpa-kode')+'): '+(e.message||'Periksa Authorized domains dan koneksi internet.')+
-        (e.code==='auth/unauthorized-domain'?' Domain rzshop.github.io belum diizinkan di Firebase.':
-        e.code==='auth/operation-not-allowed'?' Provider Google belum aktif di Firebase Authentication.':
-        e.code==='auth/network-request-failed'||e.code==='auth/unavailable'?' Layanan/koneksi sementara tidak tersedia; coba jaringan lain dan ulangi.':''));
+    
+// Login Google menggunakan Popup
+const persistenceReady = auth.setPersistence(
+  firebase.auth.Auth.Persistence.NONE
+).catch(e => {
+  console.warn('Persistence:', e);
+});
+
+document.getElementById('googleAdminLogin').onclick = async () => {
+  try {
+    msg('Membuka login Google...');
+    await persistenceReady;
+
+    const provider = new firebase.auth.GoogleAuthProvider();
+    provider.setCustomParameters({
+      prompt: 'select_account'
     });
+
+    const result = await auth.signInWithPopup(provider);
+
+    if (result && result.user) {
+      msg('Google berhasil masuk. Memeriksa hak admin...');
+      await verifyAdmin(result.user);
+    }
+  } catch (e) {
+    console.error(e);
+    msg(
+      'Login gagal (' + (e.code || 'tanpa-kode') +
+      '): ' + (e.message || 'Periksa koneksi dan Firebase.')
+    );
+  }
+};
     document.getElementById('adminLogout').onclick=async()=>{await auth.signOut();window.rzIsAdmin=false;currentUser=null;adminPanel.hidden=true;adminLogin.hidden=false;productForm.reset();document.getElementById('productId').value='';render();renderPremium();msg('Kamu sudah keluar.');};
     async function loadProducts(asAdmin=false){
       try {
