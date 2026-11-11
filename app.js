@@ -39,7 +39,9 @@ window.rzIsAdmin = false;
     document.getElementById('adminClose').onclick=()=>adminBack.classList.remove('show');
     adminBack.addEventListener('click',e=>{if(e.target===adminBack)adminBack.classList.remove('show')});
     async function verifyAdmin(user){
-      const snap=await db.collection('admins').doc(user.uid).get();
+      const snap = await db.collection('admins')
+  .doc(user.uid)
+  .get({ source: 'server' });
       if(!snap.exists || snap.data().role!=='admin'){
         await auth.signOut(); window.rzIsAdmin=false; currentUser=null;
         adminPanel.hidden=true; adminLogin.hidden=false;
@@ -75,9 +77,8 @@ document.getElementById('googleAdminLogin').onclick = async () => {
     const result = await auth.signInWithPopup(provider);
 
     if (result && result.user) {
-      msg('Google berhasil masuk. Memeriksa hak admin...');
-      await verifyAdmin(result.user);
-    }
+  msg('Google berhasil masuk. Memeriksa hak admin...');
+}
   } catch (e) {
     console.error(e);
     msg(
