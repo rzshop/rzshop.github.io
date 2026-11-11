@@ -1,0 +1,36 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() { return request.auth != null; }
+    function isAdmin() {
+      return signedIn() && request.auth.token.email in [
+        'ffmiskin188@gmail.com'
+        // Tambahkan email admin lain di bawah, contoh:
+        // ,'admin-kedua@gmail.com'
+      ];
+    }
+
+    match /products/{productId} {
+      // Pengunjung hanya dapat membaca produk aktif; admin dapat membaca semua.
+      allow read: if isAdmin() || resource.data.status == 'active';
+      allow create, update, delete: if isAdmin();
+    }
+
+    match /listingRequests/{requestId} {
+      // Form publik hanya boleh mengirim data kontak minimum dan deskripsi listing.
+      allow create: if request.resource.data.keys().hasOnly([
+        'name', 'game', 'description', 'status', 'createdAt'
+      ])
+      && request.resource.data.name is string
+      && request.resource.data.name.size() >= 1
+      && request.resource.data.name.size() <= 40
+      && request.resource.data.game is string
+      && request.resource.data.game.size() <= 40
+      && request.resource.data.description is string
+      && request.resource.data.description.size() >= 1
+      && request.resource.data.description.size() <= 500
+      && request.resource.data.status == 'pending';
+      allow read, update, delete: if isAdmin();
+    }
+  }
+}
