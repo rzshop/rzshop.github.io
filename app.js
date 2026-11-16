@@ -26,7 +26,13 @@ window.rzIsAdmin = false;
   try {
     if(!firebase.apps.length) firebase.initializeApp(cfg);
     const auth=firebase.auth(), db=firebase.firestore();
-    const productsRef=db.collection('products');
+
+// Perbaikan koneksi Firestore untuk browser tertentu
+db.settings({
+  experimentalForceLongPolling: true
+});
+
+const productsRef=db.collection('products');
     let currentUser=null;
     const adminBack=document.getElementById('adminBack');
     const adminLogin=document.getElementById('adminLogin');
